@@ -1,0 +1,59 @@
+import Tytus as tytus
+import Gui2 as ggui2
+
+print(tytus.createDatabase("db1"))
+print(tytus.createDatabase("db2"))
+print(tytus.createDatabase("db3"))
+print(tytus.createDatabase("db4"))
+print(tytus.createDatabase("db5"))
+print(tytus.createDatabase("db6"))
+
+print(tytus.createTable("db1", "profesor", 3))
+print(tytus.createTable("db1", "estudiantes", 2))
+print(tytus.createTable("db1", "cursos", 3))
+
+print(tytus.createTable("db3", "profesor3", 3))
+print(tytus.createTable("db3", "estudiantes3", 2))
+print(tytus.createTable("db3", "cursos3", 3))
+
+print(tytus.createTable("db5", "profesor5", 3))
+print(tytus.createTable("db5", "estudiantes5", 2))
+print(tytus.createTable("db5", "cursos5", 3))
+
+print(tytus.alterTable("db1", "profesor", "profesores"))
+
+print(tytus.insert("db1", "profesores", [3, "Litias", "0103"]))
+print(tytus.insert("db1", "profesores", [3, "Tacos2", "0103"]))
+print(tytus.alterAddPK("db1", "profesores", [0]))
+print(tytus.insert("db1", "profesores", [2, "lusomaicos", "0107"]))
+print(tytus.insert("db1", "profesores", [1, "Lelo", "0174"]))
+print(tytus.insert("db1", "profesores", [4, "Lalo", "0107"]))
+print(tytus.alterDropPk("db1", "profesores"))
+print(tytus.alterAddPK("db1", "profesores", [1, 2]))
+print(tytus.insert("db1", "profesores", [5, "Luis", "0105"]))
+print(tytus.insert("db1", "profesores", [6, "Lucas", "0113"]))
+print(tytus.insert("db1", "profesores", [10, "Lumelos", "0113"]))
+print(tytus.alterAddColumn("db1", "profesores", "Nueva Columna"))
+
+# print(tytus.showDatabases())
+# print(tytus.showTables("db1"))
+
+print("============Datos de Extract Table==============================")
+try:
+    for i in tytus.extractTable("db1","profesores"):
+        print(i)
+except:
+    print("None")
+
+print("============Datos de Extract Range Table==============================")
+try:
+    c=0
+    for i in tytus.extractRangeTable("db1","profesores",1,"Lu","s"):
+        print(i)
+        c+=1
+    if c == 0:
+        print("[ ]")    
+except:
+    print("None")
+
+ggui2.gui2()
